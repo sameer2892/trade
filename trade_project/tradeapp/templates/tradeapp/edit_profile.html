@@ -1,0 +1,105 @@
+{% extends "tradeapp/base.html" %}
+{% load static %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block content %}
+    {% if messages %}
+        <ul class="messages" style="color: red; font-weight: bold">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+
+<form class="form-horizontal" method="post" >
+{% csrf_token %}
+    <fieldset>
+
+    <!-- Form Name -->
+    <legend>Change Password</legend>
+
+    <!-- Password input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="new_pass1">New Password</label>
+      <div class="col-md-5">
+        <input id="new_pass1" name="new_pass1" type="password" placeholder="Type your new password" class="form-control input-md" required="">
+
+      </div>
+    </div>
+
+    <!-- Password input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="new_pass">Confirm New Password</label>
+      <div class="col-md-5">
+        <input id="new_pass" name="new_pass" type="password" placeholder="Type your new password again" class="form-control input-md" required="">
+
+      </div>
+    </div>
+
+    <input id="page" name="page" type="text" value="password" class="hidden">
+
+    <!-- Button -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="submit"></label>
+      <div class="col-md-4">
+        <button id="submit" name="submit" class="btn btn-primary">Change</button>
+      </div>
+    </div>
+
+    </fieldset>
+</form>
+
+
+
+
+
+<form class="form-horizontal" method="post">
+{% csrf_token %}
+    <fieldset>
+
+    <!-- Form Name -->
+    <legend>Change Username/Email</legend>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="username">Username</label>
+      <div class="col-md-5">
+      <input id="username" name="username" type="text" placeholder="" class="form-control input-md" value="{{ user.username }}" required>
+
+      </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="email">Email</label>
+      <div class="col-md-5">
+      <input id="email" type="email" name="email" type="text" placeholder="" class="form-control input-md" value="{{ user.email }}" required>
+
+      </div>
+    </div>
+
+
+    <input id="page" name="page" type="text" value="details" class="hidden">
+
+
+    <!-- Button -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="submit"></label>
+      <div class="col-md-4">
+        <button id="submit" name="submit" class="btn btn-primary">Update</button>
+      </div>
+    </div>
+
+    </fieldset>
+</form>
+
+
+
+
+{% endblock %}
+
+

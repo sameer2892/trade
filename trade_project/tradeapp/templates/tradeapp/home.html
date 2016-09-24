@@ -1,0 +1,46 @@
+{% extends "tradeapp/base.html" %}
+
+{% load static %}
+
+{% block title %}
+Home
+{% endblock %}
+
+
+{% block content %}
+
+{% if messages %}
+        <ul class="messages" style="color: red; font-weight: bold">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+{% endif %}
+
+{% if user.is_authenticated %}
+    <table class="table table-hover table-responsive table-bordered">
+        <tr>
+            <td>Username</td>
+            <td>{{ user.username }} </td>
+        </tr>
+
+        <tr>
+            <td>Email</td>
+            <td>{{ user.email }}</td>
+        </tr>
+
+    </table>
+
+{% else %}
+    {% if not messages %}
+    <div style="color:red; font-weight: bold">
+    Please "Sign Up" or "Sign In" to view this page.
+    </div>
+    {% endif %}
+
+{% endif %}
+
+
+
+{% endblock %}
+
