@@ -1,7 +1,8 @@
 import requests
 import json
-from django.shortcuts import render
+# from django.shortcuts import render
 from django.http import HttpResponse
+from tradeapp.views.utils import views_utils
 
 
 def read_json(request):
@@ -12,9 +13,12 @@ def read_json(request):
     print response
     data = json.loads(response.text)
 
+    data1= views_utils.get_dict_for_loop(data)
+
+
 
     # return render(request, 'tradeapp/json.html', {'data1': data})
-    return HttpResponse(json.dumps(data), content_type="application/json")
+    return HttpResponse(json.dumps(data1), content_type="application/json")
     # print data1111
 
 

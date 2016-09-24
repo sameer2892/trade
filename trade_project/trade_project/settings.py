@@ -32,8 +32,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'tradeapp.apps.TradeappConfig',
-    'loginapp.apps.LoginappConfig',
-    'masterapp.apps.MasterappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
